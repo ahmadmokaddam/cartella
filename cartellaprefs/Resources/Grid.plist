@@ -158,6 +158,30 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
+			<string>Additional Title Movement/Offset</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<string>0</string>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>additionalTitleMovement</string>
+			<key>min</key>
+			<real>-200</real>
+			<key>max</key>
+			<real>200</real>
+			<key>isSegmented</key>
+			<false/>
+			<key>showValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
 			<string> </string>
 		</dict>
 		<dict>

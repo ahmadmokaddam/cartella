@@ -66,6 +66,7 @@ NSInteger titleStyle;
 NSInteger textAlignment;
 double topOffset;
 double sideOffset;
+double additionalTitleMovement;
 double cachedTopOffset;
 double cachedSideOffset;
 double setFolderIconSize;

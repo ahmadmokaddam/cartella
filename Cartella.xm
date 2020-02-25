@@ -169,7 +169,7 @@
 -(CGRect)textRectForBounds:(CGRect)arg1 {
   CGRect original = %orig;
   //This next part is a whole lot of proportions and mathsss
-  double titletopOffset = ((titleAffectedTop) ? topOffset : 0);
+  double titletopOffset = (((titleAffectedTop) ? topOffset : 0) + additionalTitleMovement);
   if (fullScreen && isNotchedDevice) {
     return CGRectMake(
       ((original.origin.x * 0.14) - (sideOffset/2)),
@@ -333,6 +333,7 @@ static void reloadDynamics() { //This is called when the user selects the
   titleStyle = [preferences integerForKey:@"titleStyle"];
   textAlignment = [preferences integerForKey:@"textAlignment"];
   titleAffectedTop = [preferences boolForKey:@"titleAffectedTop"];
+  additionalTitleMovement = [preferences doubleForKey:@"additionalTitleMovement"];
 }
 
 %ctor {
@@ -363,6 +364,7 @@ static void reloadDynamics() { //This is called when the user selects the
     @"textAlignment" : @1,
     @"boldText" : @YES,
     @"titleAffectedTop" : @YES,
+    @"additionalTitleMovement" : @0,
 	}];
 	[preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
   [preferences registerBool:&isNotchedDevice default:YES forKey:@"isNotchedDevice"];
@@ -383,6 +385,7 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerInteger:&closeByOption default:3 forKey:@"closeByOption"];
   [preferences registerDouble:&topOffset default:0 forKey:@"topOffset"];
   [preferences registerDouble:&sideOffset default:0 forKey:@"sideOffset"];
+  [preferences registerDouble:&additionalTitleMovement default:0 forKey:@"additionalTitleMovement"];
   //Becuase it resets to 0 when full screen is turned off, this keeps it stored
   [preferences registerDouble:&cachedTopOffset default:0 forKey:@"cachedTopOffset"];
   [preferences registerDouble:&cachedSideOffset default:0 forKey:@"cachedSideOffset"];
