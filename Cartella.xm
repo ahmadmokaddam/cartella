@@ -16,7 +16,9 @@
 
 %hook SBIconLegibilityLabelView
 - (void)setHidden:(BOOL)arg1 {
-  %orig(hideLabels); //If this is toggled, will return YES.
+  if (hideLabels) {
+    %orig(YES); //If this is toggled, will return YES.
+  }
 }
 %end
 

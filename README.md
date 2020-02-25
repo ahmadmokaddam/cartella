@@ -25,7 +25,10 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 - Hide all SpringBoard labels
 - Hide all SpringBoard page dots
 
-## Change log:
-- Version 0.5:
+# Change log:
+## - Version 0.5:
   - This is the initial release of Cartella. (Cartella is not complete yet, and still considered a beta. 0.5 is the first version I will publicly release!)
   - HomePlus compatibility will be added in the next HomePlus release.
+
+## - Version 0.5.0.1:
+  - Cozy Badges support, and support for other tweaks that adjust icon labels
