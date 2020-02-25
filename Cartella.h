@@ -58,6 +58,7 @@ BOOL isNotchedDevice;
 BOOL noBlur;
 BOOL blackOut;
 BOOL boldText;
+BOOL titleAffectedTop;
 NSInteger closeByOption;
 NSInteger folderRows;
 NSInteger folderColumns;
@@ -65,6 +66,8 @@ NSInteger titleStyle;
 NSInteger textAlignment;
 double topOffset;
 double sideOffset;
+double cachedTopOffset;
+double cachedSideOffset;
 double setFolderIconSize;
 
 

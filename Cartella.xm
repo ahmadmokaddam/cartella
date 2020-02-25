@@ -167,6 +167,7 @@
 -(CGRect)textRectForBounds:(CGRect)arg1 {
   CGRect original = %orig;
   //This next part is a whole lot of proportions and mathsss
+  double titletopOffset = ((titleAffectedTop) ? topOffset : 0);
   if (fullScreen && isNotchedDevice) {
     return CGRectMake(
       ((original.origin.x * 0.14) - (sideOffset/2)),
@@ -174,7 +175,7 @@
       //box by sideOffset/2 on each side (left and right, the folder is pinned
       //in the center) The size of the folder box determines the text rect x
       //position, so I make sure to keep it pinned to the side anyways.
-      ((titleStyle == 1) ? (topOffset - 25) : (topOffset - 15)),
+      ((titleStyle == 1) ? (titletopOffset - 25) : (titletopOffset - 15)),
       (original.size.width + (original.origin.x * 1.73)),
       //Don't make me explain this math
       (original.size.height)
@@ -182,7 +183,7 @@
   } else if (fullScreen && (!isNotchedDevice)) {
     return CGRectMake(
       ((original.origin.x * 0.14) - (sideOffset/2)),
-      ((titleStyle == 1) ? (topOffset - 80) : (topOffset - 60)), //this should fix things
+      ((titleStyle == 1) ? (titletopOffset - 80) : (titletopOffset - 60)), //this should fix things
       (original.size.width + (original.origin.x * 1.73)),
       (original.size.height)
     );
@@ -220,6 +221,7 @@
     self.alpha = 1;
   }
 }
+
 %end
 
 %hook SBHFolderSettings
@@ -309,16 +311,26 @@ static void reloadDynamics() { //This is called when the user selects the
   closeByOption = [preferences integerForKey:@"closeByOption"];
   blackOut = [preferences boolForKey:@"blackOut"];
   noBlur = [preferences boolForKey:@"noBlur"];
+
+  if (fullScreen && (([preferences boolForKey:@"fullScreen"]) == NO)) {
+    [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
+    [preferences setDouble:([preferences doubleForKey:@"topOffset"]) forKey:@"cachedTopOffset"];
+
+    [preferences setDouble:0 forKey:@"topOffset"];
+    [preferences setDouble:0 forKey:@"sideOffset"];
+  }
+  if (!fullScreen && (([preferences boolForKey:@"fullScreen"]) == YES)) {
+    [preferences setDouble:([preferences doubleForKey:@"cachedSideOffset"]) forKey:@"sideOffset"];
+    [preferences setDouble:([preferences doubleForKey:@"cachedTopOffset"]) forKey:@"topOffset"];
+  }
+
   fullScreen = [preferences boolForKey:@"fullScreen"];
   isNotchedDevice = [preferences boolForKey:@"isNotchedDevice"];
-  if (!fullScreen) {
-    [preferences setDouble:0 forKey:@"sideOffset"];
-    [preferences setDouble:0 forKey:@"topOffset"];
-  }
   sideOffset = [preferences doubleForKey:@"sideOffset"];
   topOffset = [preferences doubleForKey:@"topOffset"];
   titleStyle = [preferences integerForKey:@"titleStyle"];
   textAlignment = [preferences integerForKey:@"textAlignment"];
+  titleAffectedTop = [preferences boolForKey:@"titleAffectedTop"];
 }
 
 %ctor {
@@ -336,9 +348,11 @@ static void reloadDynamics() { //This is called when the user selects the
     @"fullScreen" : @YES,
     @"closeByOption" : @3,
     @"topOffset" : @0,
+    @"sideOffset" : @0,
+    @"cachedTopOffset" : @0,
+    @"cachedSideOffset" : @0,
     @"boldersLook" : @YES,
     @"setIconSize" : @NO,
-    @"sideOffset" : @0,
     @"isNotchedDevice" : @YES,
     @"noBlur" : @NO,
     @"blackOut" : @NO,
@@ -346,6 +360,7 @@ static void reloadDynamics() { //This is called when the user selects the
     @"hideDots" : @NO,
     @"textAlignment" : @1,
     @"boldText" : @YES,
+    @"titleAffectedTop" : @YES,
 	}];
 	[preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
   [preferences registerBool:&isNotchedDevice default:YES forKey:@"isNotchedDevice"];
@@ -356,6 +371,7 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerBool:&blackOut default:NO forKey:@"blackOut"];
   [preferences registerBool:&hideIconBackground default:NO forKey:@"hideIconBackground"];
   [preferences registerBool:&hideFolderBackground default:YES forKey:@"hideFolderBackground"];
+  [preferences registerBool:&titleAffectedTop default:YES forKey:@"titleAffectedTop"];
   [preferences registerInteger:&folderRows default:3 forKey:@"folderRows"];
   [preferences registerInteger:&folderColumns default:4 forKey:@"folderColumns"];
   [preferences registerInteger:&titleStyle default:1 forKey:@"titleStyle"];
@@ -365,12 +381,20 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerInteger:&closeByOption default:3 forKey:@"closeByOption"];
   [preferences registerDouble:&topOffset default:0 forKey:@"topOffset"];
   [preferences registerDouble:&sideOffset default:0 forKey:@"sideOffset"];
+  //Becuase it resets to 0 when full screen is turned off, this keeps it stored
+  [preferences registerDouble:&cachedTopOffset default:0 forKey:@"cachedTopOffset"];
+  [preferences registerDouble:&cachedSideOffset default:0 forKey:@"cachedSideOffset"];
+
   [preferences registerDouble:&setFolderIconSize default:1 forKey:@"setFolderIconSize"];
+
+  [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
+  [preferences setDouble:([preferences doubleForKey:@"topOffset"]) forKey:@"cachedTopOffset"];
 
   if (!fullScreen) {
     //Because we don't adjust the folder background size otherwise
-    [preferences setDouble:0 forKey:@"sideOffset"];
     [preferences setDouble:0 forKey:@"topOffset"];
+    [preferences setDouble:0 forKey:@"sideOffset"];
+
     sideOffset = [preferences doubleForKey:@"sideOffset"];
     topOffset = [preferences doubleForKey:@"topOffset"];
   }

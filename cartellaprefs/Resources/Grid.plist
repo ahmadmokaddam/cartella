@@ -120,6 +120,18 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>titleAffectedTop</string>
+			<key>label</key>
+			<string>Vertically Adjust Title Based On Pinch</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Side Pinch Factor</string>

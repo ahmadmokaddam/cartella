@@ -1,12 +1,12 @@
 # Introducing Cartella
-##Bolders for iOS 13 and WAY more!
+## Bolders for iOS 13 and WAY more!
 
 We all remember Bolders, that awesome tweak that broke on iOS 13, which had made all of our folders look so good! Now, introducing Cartella, Italian for folder. Take control over the tiny details of your folders, and make them look BEAUTIFUL!!!
 
 ## Dynamic!
 Cartella is (mostly) dynamic, so you won't need to respring to apply most options!
 
-##Features List:
+## Features List:
 - Custom folder rows
 - Custom folder columns
 - Hide folder icon blur
@@ -25,7 +25,7 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 - Hide all SpringBoard labels
 - Hide all SpringBoard page dots
 
-##Change log:
+## Change log:
 - Version 0.5:
   - This is the initial release of Cartella. (Cartella is not complete yet, and still considered a beta. 0.5 is the first version I will publicly release!)
   - HomePlus compatibility will be added in the next HomePlus release.

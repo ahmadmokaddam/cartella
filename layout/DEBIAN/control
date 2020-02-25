@@ -2,7 +2,7 @@ Package: com.burritoz.cartella
 Name: Cartella
 Depends: mobilesubstrate, ws.hbang.common (>= 1.13), preferenceloader
 Conflicts: me.kritanta.homeplus (<= 0.4.9-beta)
-Version: 0.4.9~rc1
+Version: 0.5.0
 Architecture: iphoneos-arm
 Description: Cartella, a (mostly) dynamic folder tweak! This tweak will allow you to change up the look of your folders to fit any setup! Bolders for iOS 13 and WAY more!
 Maintainer: burrit0z
