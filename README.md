@@ -32,3 +32,6 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 
 ## - Version 0.5.0.1:
   - Cozy Badges support, and support for other tweaks that adjust icon labels
+
+## - Version 0.5.0.2:
+  - An option to move the title as desired
