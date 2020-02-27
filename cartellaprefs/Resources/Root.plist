@@ -35,18 +35,6 @@
 			<string>https://github.com/Burrit0z/Cartella</string>
 		</dict>
 		<dict>
-			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>label</key>
-			<string>Support Me 💙</string>
-			<key>subtitle</key>
-			<string>Thank you, kind user. This wasn't easy to make</string>
-			<key>icon</key>
-			<string>profile.png</string>
-			<key>url</key>
-			<string>https://paypal.me/Burrit0zTweaks</string>
-		</dict>
-		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
