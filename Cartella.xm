@@ -12,7 +12,7 @@
 #import <Cephei/HBPreferences.h> //Sorry if you don't like Cephei (kritanta)
 #import "Cartella.h"
 
-%group UniversalCode
+%group labelHandling
 
 %hook SBIconLegibilityLabelView
 - (void)setHidden:(BOOL)arg1 {
@@ -21,6 +21,10 @@
   }
 }
 %end
+
+%end
+
+%group UniversalCode
 
 %hook SBFloatyFolderView //Nothing that libFLEX can't find!
 -(void)setBackgroundAlpha:(CGFloat)arg1 {
@@ -337,6 +341,11 @@ static void reloadDynamics() { //This is called when the user selects the
 }
 
 %ctor {
+  //Lol this next part also helps those with pirated versions of this tweak :P
+  //  ¯\_(ツ)_/¯
+
+  cozyBadgesInstalled = ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/CozyBadges.dylib"]) ? YES : NO;
+
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadDynamics, CFSTR("com.burritoz.cartella/reload"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
   preferences = [[HBPreferences alloc] initWithIdentifier:@"com.burritoz.cartellaprefs"];
@@ -406,6 +415,9 @@ static void reloadDynamics() { //This is called when the user selects the
 
 	if (tweakEnabled) { //That way my tweak doesn't load if it doesn't need to
     %init(UniversalCode);
+    if (!cozyBadgesInstalled) {
+      %init(labelHandling);
+    }
     if (kCFCoreFoundationVersionNumber < 1600) {
       %init(iOS12); //There actually is not ios12 support, mostly
     } else {

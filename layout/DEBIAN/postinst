@@ -4,11 +4,3 @@ echo "           Made by Burrit0z                "
 echo "     Report any bugs you find, I'll do     "
 echo "         my best to fix them!              "
 echo "==========================================="
-echo "       Time to Respring your device!       "
-echo "                   3                       "
-sleep 1
-echo "                   2                       "
-sleep 1
-echo "                   1                       "
-sleep 1
-killall backboardd

@@ -31,7 +31,11 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
   - HomePlus compatibility will be added in the next HomePlus release.
 
 ## - Version 0.5.0.1:
-  - Cozy Badges support, and support for other tweaks that adjust icon labels
+  - Cozy Badges support
 
 ## - Version 0.5.0.2:
   - An option to move the title as desired
+
+## - Version 0.5.0.3:
+  - Cozy Badges support that works
+  - Removed auto respring after install/update

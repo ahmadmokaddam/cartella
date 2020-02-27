@@ -45,7 +45,7 @@
 
 BOOL shouldHide = NO;
 
-BOOL dpkgInvalid = NO;
+BOOL cozyBadgesInstalled = NO;
 
 BOOL tweakEnabled;
 BOOL hideIconBackground;
