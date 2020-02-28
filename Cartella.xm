@@ -12,17 +12,6 @@
 #import <Cephei/HBPreferences.h> //Sorry if you don't like Cephei (kritanta)
 #import "Cartella.h"
 
-// Assumes input like "#00FF00" (#RRGGBB). Thanks, Stack Overflow!
-//+(UIColor *)colorFromHexString:(NSString *)hexString;
-
-UIColor *colorFromHexString(NSString *hexString) {
-  unsigned rgbValue = 0;
-  NSScanner *scanner = [NSScanner scannerWithString:hexString];
-  [scanner setScanLocation:1]; // bypass '#' character
-  [scanner scanHexInt:&rgbValue];
-  return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
-}
-
 %group labelHandling
 
 %hook SBIconLegibilityLabelView
@@ -42,19 +31,17 @@ UIColor *colorFromHexString(NSString *hexString) {
 -(void)viewDidAppear:(BOOL)arg1 {
   %orig;
 
-if (updateAvailable) {
-      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Update Available"
-    message:@"Hello! Hope you are having a good day! Just telling you an update for Cartella is available at \n https://Burrit0z.github.io/repo/. Be sure to update for the latest features!"
-    preferredStyle:UIAlertControllerStyleAlert];
+if (updateAvailable && !didShowAlert) {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Update Available"
+       message:@"Hello! Hope you are having a good day! Just telling you an update for Cartella is available at \n https://Burrit0z.github.io/repo/. \n Be sure to update for the latest features!"
+       preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Thanks!" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thanks!" style:UIAlertActionStyleDefault
+       handler:^(UIAlertAction * action) {}];
 
-    UIApplication *application = [UIApplication sharedApplication];
-    [application openURL:[NSURL URLWithString:@"https://Burrit0z.github.io/repo"] options:@{} completionHandler:nil];
-
-    }];
-    [alertController addAction:cancelAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    didShowAlert = YES;
   }
 }
 %end
@@ -280,9 +267,8 @@ if (updateAvailable) {
 -(void)layoutSubviews { //I'm sorry for using layoutSubviews, there's probably a better way
   %orig; //I want to run the original stuff first
   if (shouldFolderIconColor) {
-    colorFromHexString(hexFolderIconColor);
     self.backgroundView.blurView.hidden = 1;
-    self.backgroundView.backgroundColor = colorForFolderIcon;
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:iconRed green:iconGreen blue:iconBlue alpha:1.0];
   }
   if (hideIconBackground) {
     self.backgroundView.blurView.hidden = 1;
@@ -389,18 +375,17 @@ static void reloadDynamics() { //This is called when the user selects the
 
   cozyBadgesInstalled = ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/CozyBadges.dylib"]) ? YES : NO;
 
-  NSURLSession *newSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-[[newSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.txt"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    if (((NSHTTPURLResponse *)response).statusCode == 200) {
-        if (data) {
-            NSString *latestVersion = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            if (latestVersion != packageVersion) {
-              updateAvailable = YES;
-            }
-            }
-        }
-    }
-}] resume];
+  NSURLSession *aSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+  [[aSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.txt"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+      if (((NSHTTPURLResponse *)response).statusCode == 200) {
+          if (data) {
+              NSString *contentOfURL = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+              if (contentOfURL != packageVersion) {
+                updateAvailable = YES;
+              }
+          }
+      }
+  }] resume];
 
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadDynamics, CFSTR("com.burritoz.cartella/reload"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
@@ -430,7 +415,6 @@ static void reloadDynamics() { //This is called when the user selects the
     @"boldText" : @YES,
     @"titleAffectedTop" : @YES,
     @"additionalTitleMovement" : @0,
-    @"hexFolderIconColor" : @"#000000",
 	}];
 	[preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
   [preferences registerBool:&isNotchedDevice default:YES forKey:@"isNotchedDevice"];
@@ -459,7 +443,9 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerDouble:&setFolderIconSize default:1 forKey:@"setFolderIconSize"];
 
   [preferences registerBool:&shouldFolderIconColor default:NO forKey:@"shouldFolderIconColor"];
-  [preferences registerObject:&hexFolderIconColor default:@"#000000" forKey:@"hexFolderIconColor"];
+  [preferences registerDouble:&iconRed default:0 forKey:@"iconRed"];
+  [preferences registerDouble:&iconGreen default:0 forKey:@"iconGreen"];
+  [preferences registerDouble:&iconBlue default:0 forKey:@"iconBlue"];
 
   [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
   [preferences setDouble:([preferences doubleForKey:@"topOffset"]) forKey:@"cachedTopOffset"];

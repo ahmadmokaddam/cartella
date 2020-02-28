@@ -78,13 +78,13 @@
 	self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,280,[[UIScreen mainScreen] bounds].size.width, 100)];
 	self.headerView.backgroundColor = [UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0];
 
-	UILabel *tweakLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 20)];
+	UILabel *tweakLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 10)];
 	tweakLabel.font=[UIFont boldSystemFontOfSize:25];
 	tweakLabel.textColor = [UIColor whiteColor];
 	tweakLabel.text = @"Cartella";
 	[self.headerView addSubview:tweakLabel];
 
-	UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 200, 20)];
+	UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 200, 10)];
 	authorLabel.font=[UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
 	authorLabel.textColor = [UIColor whiteColor];
 	authorLabel.text = @"by Burrit0z";

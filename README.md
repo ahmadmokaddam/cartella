@@ -43,3 +43,5 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 ## - Version 0.5.1:
   - Nicer preferences using kritanta's pref cells
   - Restructured a lot of stuff
+  - Update notifications to keep you up to date!
+  - Custom folder icon colors

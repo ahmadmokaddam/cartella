@@ -1,7 +1,11 @@
 //Created February 2020 by burrit0z
 
-double packageVersion = @"0.5.0.3"
+NSString *packageVersion = @"0.5.0.3";
 BOOL updateAvailable = NO;
+BOOL didShowAlert = NO;
+
+@interface SBIconController : UIViewController
+@end
 
 @interface SBIconListGridLayoutConfiguration
 @property (nonatomic, assign) NSString *isFolder;
@@ -81,8 +85,9 @@ double additionalTitleMovement;
 double cachedTopOffset;
 double cachedSideOffset;
 double setFolderIconSize;
-NSString *hexFolderIconColor;
-UIColor *colorForFolderIcon;
+double iconRed;
+double iconGreen;
+double iconBlue;
 
 
 HBPreferences *preferences;
