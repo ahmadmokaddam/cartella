@@ -382,7 +382,7 @@ static void reloadDynamics() { //This is called when the user selects the
   cozyBadgesInstalled = ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/CozyBadges.dylib"]) ? YES : NO;
 
   NSURLSession *aSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-  [[aSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.txt"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [[aSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.data"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
       if (((NSHTTPURLResponse *)response).statusCode == 200) {
           if (data) {
               contentOfURL = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
