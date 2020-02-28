@@ -386,7 +386,7 @@ static void reloadDynamics() { //This is called when the user selects the
       if (((NSHTTPURLResponse *)response).statusCode == 200) {
           if (data) {
               contentOfURL = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-              if ([contentOfURL integerValue] < [packageVersion integerValue]) {
+              if ([contentOfURL integerValue] < packageVersion) {
                 updateAvailable = YES;
               } else {
                 updateAvailable = NO;
