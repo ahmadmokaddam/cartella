@@ -1,6 +1,7 @@
 //Created February 2020 by burrit0z
 
-NSString *packageVersion = @"0.5.0.3";
+double packageVersion = 0.5.0.3;
+NSString *contentOfURL;
 BOOL updateAvailable = NO;
 BOOL didShowAlert = NO;
 
@@ -74,7 +75,8 @@ BOOL blackOut;
 BOOL boldText;
 BOOL titleAffectedTop;
 BOOL shouldFolderIconColor;
-BOOl shouldFolderBackgroundViewColor;
+BOOL shouldFolderBackgroundViewColor;
+BOOL remindUpdates;
 
 NSInteger closeByOption;
 NSInteger folderRows;

@@ -24,7 +24,7 @@
 
 %end
 
-%group UniversalCode
+%group autoUpdate
 
 %hook SBIconController
 
@@ -32,8 +32,9 @@
   %orig;
 
 if (updateAvailable && !didShowAlert) {
+  NSString *updateMessage = [NSString stringWithFormat:@"Hello!Just telling you version %@ for Cartella is available at \n https://Burrit0z.github.io/repo/. \n Be sure to update for the latest features!", contentOfURL];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Update Available"
-       message:@"Hello! Hope you are having a good day! Just telling you an update for Cartella is available at \n https://Burrit0z.github.io/repo/. \n Be sure to update for the latest features!"
+       message:updateMessage
        preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thanks!" style:UIAlertActionStyleDefault
@@ -45,6 +46,9 @@ if (updateAvailable && !didShowAlert) {
   }
 }
 %end
+
+%end
+%group UniversalCode
 
 %hook SBFloatyFolderView //Nothing that libFLEX can't find!
 -(void)setBackgroundAlpha:(CGFloat)arg1 {
@@ -381,9 +385,11 @@ static void reloadDynamics() { //This is called when the user selects the
   [[aSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.txt"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
       if (((NSHTTPURLResponse *)response).statusCode == 200) {
           if (data) {
-              NSString *contentOfURL = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-              if (contentOfURL != packageVersion) {
+              contentOfURL = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+              if ([contentOfURL integerValue] != packageVersion) {
                 updateAvailable = YES;
+              } else {
+                updateAvailable = NO;
               }
           }
       }
@@ -417,7 +423,10 @@ static void reloadDynamics() { //This is called when the user selects the
     @"boldText" : @YES,
     @"titleAffectedTop" : @YES,
     @"additionalTitleMovement" : @0,
+    @"remindUpdates" : @YES,
 	}];
+  [preferences registerBool:&remindUpdates default:YES forKey:@"remindUpdates"];
+
 	[preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
   [preferences registerBool:&isNotchedDevice default:YES forKey:@"isNotchedDevice"];
   [preferences registerBool:&boldText default:YES forKey:@"boldText"];
@@ -450,7 +459,7 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerDouble:&iconBlue default:0 forKey:@"iconBlue"];
   [preferences registerDouble:&iconAlpha default:0 forKey:@"iconAplha"]; //This is a prime example of bad naming
 
-  [preferences registerBool:&shouldFolderFolderBackgroundViewColor default:NO forKey:@"shouldFolderBackgroundViewColor"];
+  [preferences registerBool:&shouldFolderBackgroundViewColor default:NO forKey:@"shouldFolderBackgroundViewColor"];
   [preferences registerDouble:&folderBackgroundViewRed default:0 forKey:@"folderBackgroundViewRed"];
   [preferences registerDouble:&folderBackgroundViewGreen default:0 forKey:@"folderBackgroundViewGreen"];
   [preferences registerDouble:&folderBackgroundViewBlue default:0 forKey:@"folderBackgroundViewBlue"];
@@ -470,6 +479,9 @@ static void reloadDynamics() { //This is called when the user selects the
 
 	if (tweakEnabled) { //That way my tweak doesn't load if it doesn't need to
     %init(UniversalCode);
+    if (remindUpdates) {
+      %init(autoUpdate);
+    }
     if (!cozyBadgesInstalled) {
       %init(labelHandling);
     }

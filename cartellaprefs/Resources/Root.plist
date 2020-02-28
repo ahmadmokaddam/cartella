@@ -34,6 +34,18 @@
 			<key>defaults</key>
 			<string>com.burritoz.cartellaprefs</string>
 			<key>key</key>
+			<string>remindUpdates</string>
+			<key>label</key>
+			<string>Update Reminders</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
 			<string>isNotchedDevice</string>
 			<key>label</key>
 			<string>This device is Notched</string>
