@@ -254,14 +254,6 @@ if (updateAvailable && !didShowAlert) {
 
 %end
 
-%hook SBFolderBackgroundView
-
--(void)layoutSubviews {
-  %orig;
-  self._blurView.backgroundColor = [UIColor colorWithRed:iconRed green:iconGreen blue:iconBlue alpha:iconAlpha];
-}
-
-%end
 %hook SBHFolderSettings
 
 -(BOOL)pinchToClose {
