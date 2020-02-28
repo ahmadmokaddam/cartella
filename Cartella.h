@@ -1,6 +1,6 @@
 //Created February 2020 by burrit0z
 
-double packageVersion = 0.5.0.3;
+double packageVersion = 0503
 NSString *contentOfURL;
 BOOL updateAvailable = NO;
 BOOL didShowAlert = NO;
