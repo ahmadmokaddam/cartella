@@ -41,30 +41,22 @@ UIColor *colorFromHexString(NSString *hexString) {
 
 -(void)viewDidAppear:(BOOL)arg1 {
   %orig;
-  NSURLSession *newSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-[[newSession dataTaskWithURL:[NSURL URLWithString:@"https://"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    if (((NSHTTPURLResponse *)response).statusCode == 200) {
-        if (data) {
-            NSString *latestVersion = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            if (latestVersion != packageVersion) {
-              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Update Available"
-		message:@"Hello! Hope you are having a good day! Just telling you an update for Cartella is available at \n https://Burrit0z.github.io/repo/. Be sure to update for the latest features!"
-		preferredStyle:UIAlertControllerStyleAlert];
 
-		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Thanks!" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+if (updateAvailable) {
+      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Update Available"
+    message:@"Hello! Hope you are having a good day! Just telling you an update for Cartella is available at \n https://Burrit0z.github.io/repo/. Be sure to update for the latest features!"
+    preferredStyle:UIAlertControllerStyleAlert];
 
-			UIApplication *application = [UIApplication sharedApplication];
-			[application openURL:[NSURL URLWithString:@"https://Burrit0z.github.io/repo"] options:@{} completionHandler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Thanks!" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
 
-	}];
+    UIApplication *application = [UIApplication sharedApplication];
+    [application openURL:[NSURL URLWithString:@"https://Burrit0z.github.io/repo"] options:@{} completionHandler:nil];
+
+    }];
     [alertController addAction:cancelAction];
-		[self presentViewController:alertController animated:YES completion:nil];
-            }
-        }
-    }
-}] resume];
+    [self presentViewController:alertController animated:YES completion:nil];
+  }
 }
-
 %end
 
 %hook SBFloatyFolderView //Nothing that libFLEX can't find!
@@ -396,6 +388,20 @@ static void reloadDynamics() { //This is called when the user selects the
   //  ¯\_(ツ)_/¯
 
   cozyBadgesInstalled = ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/CozyBadges.dylib"]) ? YES : NO;
+
+  NSURLSession *newSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+[[newSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.txt"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (((NSHTTPURLResponse *)response).statusCode == 200) {
+        if (data) {
+            NSString *latestVersion = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if (latestVersion != packageVersion) {
+              updateAvailable = YES;
+            }
+            }
+        }
+    }
+}] resume];
+}
 
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadDynamics, CFSTR("com.burritoz.cartella/reload"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
