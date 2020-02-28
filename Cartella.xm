@@ -24,30 +24,6 @@
 
 %end
 
-%group autoUpdate
-
-%hook SBIconController
-
--(void)viewDidAppear:(BOOL)arg1 {
-  %orig;
-
-if (updateAvailable && !didShowAlert) {
-  NSString *updateMessage = [NSString stringWithFormat:@"Hello! Just telling you version %@ for Cartella is available at \n https://Burrit0z.github.io/repo/. \n Be sure to update for the latest features!", contentOfURL];
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Update Available"
-       message:updateMessage
-       preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thanks!" style:UIAlertActionStyleDefault
-       handler:^(UIAlertAction * action) {}];
-
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
-    didShowAlert = YES;
-  }
-}
-%end
-
-%end
 %group UniversalCode
 
 %hook SBFloatyFolderView //Nothing that libFLEX can't find!
@@ -381,20 +357,6 @@ static void reloadDynamics() { //This is called when the user selects the
 
   cozyBadgesInstalled = ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/CozyBadges.dylib"]) ? YES : NO;
 
-  NSURLSession *aSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-  [[aSession dataTaskWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/Burrit0z/cartella/new/latestversion.data"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-      if (((NSHTTPURLResponse *)response).statusCode == 200) {
-          if (data) {
-              contentOfURL = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-              if ([contentOfURL integerValue] > packageVersion) {
-                updateAvailable = YES;
-              } else {
-                updateAvailable = NO;
-              }
-          }
-      }
-  }] resume];
-
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadDynamics, CFSTR("com.burritoz.cartella/reload"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
   preferences = [[HBPreferences alloc] initWithIdentifier:@"com.burritoz.cartellaprefs"];
@@ -423,9 +385,7 @@ static void reloadDynamics() { //This is called when the user selects the
     @"boldText" : @YES,
     @"titleAffectedTop" : @YES,
     @"additionalTitleMovement" : @0,
-    @"remindUpdates" : @YES,
 	}];
-  [preferences registerBool:&remindUpdates default:YES forKey:@"remindUpdates"];
 
 	[preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
   [preferences registerBool:&isNotchedDevice default:YES forKey:@"isNotchedDevice"];
@@ -479,9 +439,6 @@ static void reloadDynamics() { //This is called when the user selects the
 
 	if (tweakEnabled) { //That way my tweak doesn't load if it doesn't need to
     %init(UniversalCode);
-    if (remindUpdates) {
-      %init(autoUpdate);
-    }
     if (!cozyBadgesInstalled) {
       %init(labelHandling);
     }

@@ -1,13 +1,5 @@
 //Created February 2020 by burrit0z
 
-double packageVersion = 0503;
-NSString *contentOfURL;
-BOOL updateAvailable = NO;
-BOOL didShowAlert = NO;
-
-@interface SBIconController : UIViewController
-@end
-
 @interface SBIconListGridLayoutConfiguration
 @property (nonatomic, assign) NSString *isFolder;
 
@@ -76,7 +68,6 @@ BOOL boldText;
 BOOL titleAffectedTop;
 BOOL shouldFolderIconColor;
 BOOL shouldFolderBackgroundViewColor;
-BOOL remindUpdates;
 
 NSInteger closeByOption;
 NSInteger folderRows;
