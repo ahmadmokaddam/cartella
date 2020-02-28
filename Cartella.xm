@@ -401,7 +401,6 @@ static void reloadDynamics() { //This is called when the user selects the
         }
     }
 }] resume];
-}
 
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadDynamics, CFSTR("com.burritoz.cartella/reload"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
