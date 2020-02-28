@@ -32,7 +32,7 @@
   %orig;
 
 if (updateAvailable && !didShowAlert) {
-  NSString *updateMessage = [NSString stringWithFormat:@"Hello!Just telling you version %@ for Cartella is available at \n https://Burrit0z.github.io/repo/. \n Be sure to update for the latest features!", contentOfURL];
+  NSString *updateMessage = [NSString stringWithFormat:@"Hello! Just telling you version %@ for Cartella is available at \n https://Burrit0z.github.io/repo/. \n Be sure to update for the latest features!", contentOfURL];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Update Available"
        message:updateMessage
        preferredStyle:UIAlertControllerStyleAlert];
