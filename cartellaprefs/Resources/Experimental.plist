@@ -8,49 +8,39 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>BUGS ARE EXPECTED:</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>condensed</key>
-			<true/>
-			<key>headerCellClass</key>
-			<string>HBPackageNameHeaderCell</string>
-			<key>packageIdentifier</key>
-			<string>com.burritoz.cartella</string>
-			<key>packageNameOverride</key>
-			<string>Experimental ⚠️</string>
-			<key>showVersion</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
 			<string> </string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>action</key>
-			<string>apply:</string>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>shouldFolderIconColor</string>
 			<key>label</key>
-			<string>Apply Dynamically</string>
+			<string>Enable Folder Icon Color</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Not Required for MOST options:</string>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string>#000000</string>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>hexFolderIconColor</string>
+			<key>placeholder</key>
+			<string>Hex Value, ex. #000000</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>respring:</string>
+			<string>applyColors</string>
 			<key>label</key>
-			<string>Respring</string>
+			<string>Apply Colors</string>
 		</dict>
 		<dict>
 			<key>cell</key>

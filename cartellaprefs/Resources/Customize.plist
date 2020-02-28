@@ -6,22 +6,6 @@
 	<array>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>condensed</key>
-			<true/>
-			<key>headerCellClass</key>
-			<string>HBPackageNameHeaderCell</string>
-			<key>icon</key>
-			<string>customizationIcon.png</string>
-			<key>packageIdentifier</key>
-			<string>com.burritoz.cartella</string>
-			<key>packageNameOverride</key>
-			<string>Customization Options</string>
-			<key>showVersion</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<true/>
@@ -233,20 +217,6 @@
 			<string>apply:</string>
 			<key>label</key>
 			<string>Apply Dynamically</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Not Required for MOST options:</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>action</key>
-			<string>respring:</string>
-			<key>label</key>
-			<string>Respring</string>
 		</dict>
 		<dict>
 			<key>cell</key>

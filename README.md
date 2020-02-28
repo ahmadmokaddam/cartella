@@ -39,3 +39,7 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 ## - Version 0.5.0.3:
   - Cozy Badges support that works
   - Removed auto respring after install/update
+
+## - Version 0.5.1:
+  - Nicer preferences using kritanta's pref cells
+  - Restructured a lot of stuff

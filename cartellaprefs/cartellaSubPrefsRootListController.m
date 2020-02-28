@@ -1,5 +1,5 @@
 #include "cartellaSubPrefsRootListController.h"
-
+#import <spawn.h>
 //I know this isn't a root controller, i'm too lazy to rename
 
 @implementation cartellaSubPrefsRootListController
@@ -22,6 +22,14 @@
     _specifiers = [self loadSpecifiersFromPlistName:sub target:self];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+	[UISegmentedControl appearanceWhenContainedInInstancesOfClasses:@[self.class]].tintColor = [UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0];
+    [[UISwitch appearanceWhenContainedInInstancesOfClasses:@[self.class]] setOnTintColor:[UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0]];
+    [[UISlider appearanceWhenContainedInInstancesOfClasses:@[self.class]] setTintColor:[UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0]];
+
+    [super viewWillAppear:animated];
+}
+
 - (void)setSpecifier:(PSSpecifier *)specifier {
     [self loadFromSpecifier:specifier];
     [super setSpecifier:specifier];
@@ -36,5 +44,9 @@
        CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.burritoz.cartella/reload"), nil, nil, true);
 		 });
 	 }
+
+-(void)applyColors { //This should work?
+   [self.view endEditing:YES];
+}
 
 @end

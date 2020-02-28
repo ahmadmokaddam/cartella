@@ -1,5 +1,7 @@
 //Created February 2020 by burrit0z
 
+double packageVersion = @"0.5.0.3"
+
 @interface SBIconListGridLayoutConfiguration
 @property (nonatomic, assign) NSString *isFolder;
 
@@ -14,11 +16,18 @@
 -(void)layoutSubviews;
 @end
 
+//DO NOT USE THESE NEXT TWO INTERFACES, THEY ARE MOSTLY INACCURATE
+@interface SBWallpaperEffectView : UIView
+@property (nonatomic, retain) UIView *blurView;
+@end
+
 @interface SBFolderIconImageView : UIView
-@property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, retain) SBWallpaperEffectView *backgroundView; //This isn't really what the headers say...
 @property (nonatomic, assign) CGFloat aplha;
 @property (nonatomic, assign) CGAffineTransform transform;
 @end
+
+//////////////////
 
 @interface SBIconListPageControl : UIView
 @property (nonatomic, assign) BOOL hidden;
@@ -59,6 +68,7 @@ BOOL noBlur;
 BOOL blackOut;
 BOOL boldText;
 BOOL titleAffectedTop;
+BOOL shouldFolderIconColor;
 NSInteger closeByOption;
 NSInteger folderRows;
 NSInteger folderColumns;
@@ -70,6 +80,8 @@ double additionalTitleMovement;
 double cachedTopOffset;
 double cachedSideOffset;
 double setFolderIconSize;
+NSString *hexFolderIconColor;
+UIColor *colorForFolderIcon;
 
 
 HBPreferences *preferences;

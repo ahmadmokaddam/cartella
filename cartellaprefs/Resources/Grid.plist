@@ -7,22 +7,6 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>condensed</key>
-			<true/>
-			<key>headerCellClass</key>
-			<string>HBPackageNameHeaderCell</string>
-			<key>icon</key>
-			<string>gridIcon.png</string>
-			<key>packageIdentifier</key>
-			<string>com.burritoz.cartella</string>
-			<key>packageNameOverride</key>
-			<string>Grid Configuration</string>
-			<key>showVersion</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Folder Columns</string>
 		</dict>
@@ -183,14 +167,6 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string> </string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>action</key>
-			<string>respring:</string>
-			<key>label</key>
-			<string>Respring</string>
 		</dict>
 		<dict>
 			<key>cell</key>
