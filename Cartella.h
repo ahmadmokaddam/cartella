@@ -74,6 +74,8 @@ BOOL blackOut;
 BOOL boldText;
 BOOL titleAffectedTop;
 BOOL shouldFolderIconColor;
+BOOl shouldFolderBackgroundViewColor;
+
 NSInteger closeByOption;
 NSInteger folderRows;
 NSInteger folderColumns;
@@ -85,10 +87,16 @@ double additionalTitleMovement;
 double cachedTopOffset;
 double cachedSideOffset;
 double setFolderIconSize;
+
 double iconRed;
 double iconGreen;
 double iconBlue;
 double iconAlpha;
+
+double folderBackgroundViewRed;
+double folderBackgroundViewGreen;
+double folderBackgroundViewBlue;
+double folderBackgroundViewAlpha;
 
 
 HBPreferences *preferences;

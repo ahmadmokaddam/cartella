@@ -242,7 +242,9 @@ if (updateAvailable && !didShowAlert) {
 //be easy for others to understand when they are reading my code.
 
 -(void)layoutSubviews {
-  if (blackOut) {
+  if (shouldFolderBackgroundViewColor) {
+    self.backgroundColor = [UIColor colorWithRed:folderBackgroundViewRed green:folderBackgroundViewGreen blue:folderBackgroundViewBlue alpha:folderBackgroundViewAlpha];
+  } else if (blackOut) {
     self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
   } else if (noBlur) {
     self.alpha = 0;
@@ -447,6 +449,12 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerDouble:&iconGreen default:0 forKey:@"iconGreen"];
   [preferences registerDouble:&iconBlue default:0 forKey:@"iconBlue"];
   [preferences registerDouble:&iconAlpha default:0 forKey:@"iconAplha"]; //This is a prime example of bad naming
+
+  [preferences registerBool:&shouldFolderFolderBackgroundViewColor default:NO forKey:@"shouldFolderBackgroundViewColor"];
+  [preferences registerDouble:&folderBackgroundViewRed default:0 forKey:@"folderBackgroundViewRed"];
+  [preferences registerDouble:&folderBackgroundViewGreen default:0 forKey:@"folderBackgroundViewGreen"];
+  [preferences registerDouble:&folderBackgroundViewBlue default:0 forKey:@"folderBackgroundViewBlue"];
+  [preferences registerDouble:&folderBackgroundViewAlpha default:0 forKey:@"folderBackgroundViewAplha"];
 
   [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
   [preferences setDouble:([preferences doubleForKey:@"topOffset"]) forKey:@"cachedTopOffset"];
