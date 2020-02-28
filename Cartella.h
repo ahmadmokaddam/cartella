@@ -15,6 +15,13 @@ BOOL didShowAlert = NO;
 - (NSUInteger)numberOfPortraitRows;
 @end
 
+@interface SBFolderBackgroundView : UIView
+@property (nonatomic, retain) UIColor *backgroundColor;
+@property (nonatomic, assign) CGFloat aplha;
+@property (nonatomic, retain) UIView *_blurView;
+-(void)layoutSubviews;
+@end
+
 @interface SBFolderControllerBackgroundView : UIView
 @property (nonatomic, retain) UIColor *backgroundColor;
 @property (nonatomic, assign) CGFloat aplha;
@@ -88,6 +95,7 @@ double setFolderIconSize;
 double iconRed;
 double iconGreen;
 double iconBlue;
+double iconAlpha;
 
 
 HBPreferences *preferences;

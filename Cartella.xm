@@ -254,6 +254,14 @@ if (updateAvailable && !didShowAlert) {
 
 %end
 
+%hook SBFolderBackgroundView
+
+-(void)layoutSubviews {
+  %orig;
+  self._blurView.backgroundColor = [UIColor colorWithRed:iconRed green:iconGreen blue:iconBlue alpha:iconAlpha];
+}
+
+%end
 %hook SBHFolderSettings
 
 -(BOOL)pinchToClose {
@@ -268,7 +276,7 @@ if (updateAvailable && !didShowAlert) {
   %orig; //I want to run the original stuff first
   if (shouldFolderIconColor) {
     self.backgroundView.blurView.hidden = 1;
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:iconRed green:iconGreen blue:iconBlue alpha:1.0];
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:iconRed green:iconGreen blue:iconBlue alpha:iconAlpha];
   }
   if (hideIconBackground) {
     self.backgroundView.blurView.hidden = 1;
@@ -446,6 +454,7 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerDouble:&iconRed default:0 forKey:@"iconRed"];
   [preferences registerDouble:&iconGreen default:0 forKey:@"iconGreen"];
   [preferences registerDouble:&iconBlue default:0 forKey:@"iconBlue"];
+  [preferences registerDouble:&iconAlpha default:0 forKey:@"iconAplha"]; //This is a prime example of bad naming
 
   [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
   [preferences setDouble:([preferences doubleForKey:@"topOffset"]) forKey:@"cachedTopOffset"];
