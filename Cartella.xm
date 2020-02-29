@@ -330,6 +330,7 @@ static void reloadDynamics() { //This is called when the user selects the
   iconAlpha = [preferences doubleForKey:@"iconAlpha"];
 
   folderBackgroundViewRed = [preferences doubleForKey:@"folderBackgroundViewRed"];
+  folderBackgroundViewGreen = [preferences doubleForKey:@"folderBackgroundViewGreen"];
   folderBackgroundViewBlue = [preferences doubleForKey:@"folderBackgroundViewBlue"];
   folderBackgroundViewAlpha = [preferences doubleForKey:@"folderBackgroundViewAlpha"];
 
