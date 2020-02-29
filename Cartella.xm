@@ -108,9 +108,9 @@
     if ([self.isFolder isEqualToString:@"YES"]) {
       UIEdgeInsets original = %orig;
       return UIEdgeInsetsMake(
-        (original.top),
+        (original.top + 50),
         (original.left/2), //no sense in wasting space if the background is hidden, so it won't look ugly.
-        (original.bottom),
+        (original.bottom - 50),
         (original.right/2)
       );
     } else {
@@ -127,10 +127,9 @@
 
 -(CGSize)contentBackgroundSize {
   if (fullScreen) { //So we don't adjust anything if it's not set to fullScreen
-    CGSize original = %orig;
     return CGSizeMake(
-      ((original.width*1.15) - sideOffset),
-      (original.height*1.6 - topOffset)
+      (([[UIScreen mainScreen] bounds].size.width - 20) - sideOffset),
+      (([[UIScreen mainScreen] bounds].size.height - 20) - topOffset)
     );
   } else {
     return (%orig);
@@ -228,11 +227,9 @@
     self.backgroundColor = [UIColor colorWithRed:folderBackgroundViewRed green:folderBackgroundViewGreen blue:folderBackgroundViewBlue alpha:folderBackgroundViewAlpha];
   } else if (blackOut) {
     self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
-  } else if (noBlur) {
-    self.alpha = 0;
   } else {
     %orig;
-    self.alpha = 1;
+    self.alpha = setBlur;
   }
 }
 
@@ -344,7 +341,7 @@ static void reloadDynamics() { //This is called when the user selects the
   boldersLook = [preferences boolForKey:@"boldersLook"];
   closeByOption = [preferences integerForKey:@"closeByOption"];
   blackOut = [preferences boolForKey:@"blackOut"];
-  noBlur = [preferences boolForKey:@"noBlur"];
+  setBlur = [preferences doubleForKey:@"setBlur"];
 
   if (fullScreen && (([preferences boolForKey:@"fullScreen"]) == NO)) {
     [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
@@ -394,7 +391,7 @@ static void reloadDynamics() { //This is called when the user selects the
     @"boldersLook" : @YES,
     @"setIconSize" : @NO,
     @"isNotchedDevice" : @YES,
-    @"noBlur" : @NO,
+    @"setBlur" : @0,
     @"blackOut" : @NO,
     @"setFolderIconSize" : @1,
     @"hideDots" : @NO,
@@ -411,7 +408,7 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerBool:&boldText default:YES forKey:@"boldText"];
   [preferences registerBool:&hideLabels default:NO forKey:@"hideLabels"];
   [preferences registerBool:&hideDots default:NO forKey:@"hideDots"];
-  [preferences registerBool:&noBlur default:NO forKey:@"noBlur"];
+  [preferences registerDouble:&setBlur default:0 forKey:@"setBlur"];
   [preferences registerBool:&blackOut default:NO forKey:@"blackOut"];
   [preferences registerBool:&hideIconBackground default:NO forKey:@"hideIconBackground"];
   [preferences registerBool:&hideFolderBackground default:YES forKey:@"hideFolderBackground"];

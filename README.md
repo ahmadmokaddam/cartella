@@ -38,10 +38,12 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 
 ## - Version 0.5.0.3:
   - Cozy Badges support that works
-  - Removed auto respring after install/update
+  - Removed auto respring after install/update, as requested
 
 ## - Version 0.5.1:
   - Nicer preferences using kritanta's pref cells
   - Restructured a lot of stuff
-  - Update notifications to keep you up to date!
+  - Added custom wallpaper blur effect instead of just "Hide Wallpaper Blur"
   - Custom folder icon colors
+  - Custom folder view colors
+  - Changed the math I use to calculate the folder background size to allow for more a consistent look across all devices, including those with custom resolutions.

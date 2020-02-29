@@ -36,18 +36,6 @@
 			<key>defaults</key>
 			<string>com.burritoz.cartellaprefs</string>
 			<key>key</key>
-			<string>noBlur</string>
-			<key>label</key>
-			<string>Hide Wallpaper Blur</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.burritoz.cartellaprefs</string>
-			<key>key</key>
 			<string>blackOut</string>
 			<key>label</key>
 			<string>OLED Folders</string>
@@ -69,6 +57,30 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Title Style:</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Wallpaper Blur Strength:</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<string>0</string>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>setBlur</string>
+			<key>min</key>
+			<real>0</real>
+			<key>max</key>
+			<real>1</real>
+			<key>isSegmented</key>
+			<false/>
+			<key>showValue</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -152,30 +164,6 @@
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Resize Folder Icon</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>default</key>
-			<string>1</string>
-			<key>defaults</key>
-			<string>com.burritoz.cartellaprefs</string>
-			<key>key</key>
-			<string>setFolderIconSize</string>
-			<key>min</key>
-			<real>0.01</real>
-			<key>max</key>
-			<real>2</real>
-			<key>isSegmented</key>
-			<false/>
-			<key>showValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<false/>
@@ -204,6 +192,30 @@
 				<key>showValue</key>
 				<true/>
 			</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Resize Folder Icon</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<string>1</string>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>setFolderIconSize</string>
+			<key>min</key>
+			<real>0.01</real>
+			<key>max</key>
+			<real>2</real>
+			<key>isSegmented</key>
+			<false/>
+			<key>showValue</key>
+			<true/>
+		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>

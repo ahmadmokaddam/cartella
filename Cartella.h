@@ -62,7 +62,6 @@ BOOL hideDots;
 BOOL boldersLook;
 BOOL fullScreen;
 BOOL isNotchedDevice;
-BOOL noBlur;
 BOOL blackOut;
 BOOL boldText;
 BOOL titleAffectedTop;
@@ -82,6 +81,7 @@ double cachedTopOffset;
 double cachedSideOffset;
 double setFolderIconSize;
 double setCustomRadius;
+double setBlur;
 
 double iconRed;
 double iconGreen;
