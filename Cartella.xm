@@ -129,7 +129,7 @@
   if (fullScreen) { //So we don't adjust anything if it's not set to fullScreen
     return CGSizeMake(
       (([[UIScreen mainScreen] bounds].size.width - 20) - sideOffset),
-      (([[UIScreen mainScreen] bounds].size.height - 20) - topOffset)
+      (([[UIScreen mainScreen] bounds].size.height - 220) - topOffset)
     );
   } else {
     return (%orig);
