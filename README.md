@@ -40,7 +40,7 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
   - Cozy Badges support that works
   - Removed auto respring after install/update, as requested
 
-## - Version 0.5.1:
+## - Version 0.6:
   - Nicer preferences using kritanta's pref cells
   - Restructured a lot of stuff
   - Added custom wallpaper blur effect instead of just "Hide Wallpaper Blur"
