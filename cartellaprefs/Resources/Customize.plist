@@ -56,12 +56,6 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Title Style:</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
 			<string>Wallpaper Blur Strength:</string>
 		</dict>
 		<dict>
@@ -81,6 +75,12 @@
 			<false/>
 			<key>showValue</key>
 			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Title Style:</string>
 		</dict>
 		<dict>
 			<key>cell</key>
