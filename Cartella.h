@@ -68,6 +68,7 @@ BOOL boldText;
 BOOL titleAffectedTop;
 BOOL shouldFolderIconColor;
 BOOL shouldFolderBackgroundViewColor;
+BOOL customRadius;
 
 NSInteger closeByOption;
 NSInteger folderRows;
@@ -80,6 +81,7 @@ double additionalTitleMovement;
 double cachedTopOffset;
 double cachedSideOffset;
 double setFolderIconSize;
+double setCustomRadius;
 
 double iconRed;
 double iconGreen;

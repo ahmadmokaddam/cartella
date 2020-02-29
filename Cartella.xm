@@ -138,7 +138,9 @@
 }
 
 -(CGFloat)continuousCornerRadius {
-  if (fullScreen && hideFolderBackground) {
+  if (customRadius) {
+    return (setCustomRadius);
+  } else if (fullScreen && hideFolderBackground) {
     return 0;
   } else {
     return %orig;
@@ -320,6 +322,20 @@
 
 static void reloadDynamics() { //This is called when the user selects the
                                //"Apply Dynamically" option in settings
+  shouldFolderIconColor = [preferences boolForKey:@"shouldFolderIconColor"];
+  shouldFolderBackgroundViewColor = [preferences boolForKey:@"shouldFolderBackgroundViewColor"];
+  iconRed = [preferences doubleForKey:@"iconRed"];
+  iconBlue = [preferences doubleForKey:@"iconBlue"];
+  iconGreen = [preferences doubleForKey:@"iconGreen"];
+  iconAlpha = [preferences doubleForKey:@"iconAlpha"];
+
+  folderBackgroundViewRed = [preferences doubleForKey:@"folderBackgroundViewRed"];
+  folderBackgroundViewBlue = [preferences doubleForKey:@"folderBackgroundViewBlue"];
+  folderBackgroundViewAlpha = [preferences doubleForKey:@"folderBackgroundViewAlpha"];
+
+  customRadius = [preferences boolForKey:@"customRadius"];
+  setCustomRadius = [preferences doubleForKey:@"setCustomRadius"];
+
   boldText = [preferences boolForKey:@"boldText"];
   setFolderIconSize = [preferences doubleForKey:@"setFolderIconSize"];
   hideIconBackground = [preferences boolForKey:@"hideIconBackground"];
@@ -385,9 +401,11 @@ static void reloadDynamics() { //This is called when the user selects the
     @"boldText" : @YES,
     @"titleAffectedTop" : @YES,
     @"additionalTitleMovement" : @0,
+    @"customRadius" : @NO,
 	}];
 
-	[preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
+	[preferences registerBool:&customRadius default:NO forKey:@"customRadius"];
+  [preferences registerBool:&tweakEnabled default:YES forKey:@"tweakEnabled"];
   [preferences registerBool:&isNotchedDevice default:YES forKey:@"isNotchedDevice"];
   [preferences registerBool:&boldText default:YES forKey:@"boldText"];
   [preferences registerBool:&hideLabels default:NO forKey:@"hideLabels"];
@@ -412,6 +430,7 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerDouble:&cachedSideOffset default:0 forKey:@"cachedSideOffset"];
 
   [preferences registerDouble:&setFolderIconSize default:1 forKey:@"setFolderIconSize"];
+  [preferences registerDouble:&setCustomRadius default:60 forKey:@"setCustomRadius"];
 
   [preferences registerBool:&shouldFolderIconColor default:NO forKey:@"shouldFolderIconColor"];
   [preferences registerDouble:&iconRed default:0 forKey:@"iconRed"];

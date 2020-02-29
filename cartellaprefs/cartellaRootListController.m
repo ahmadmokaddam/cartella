@@ -1,10 +1,15 @@
 #include "cartellaRootListController.h"
 #import <spawn.h>
 
-//This is pretty much kritanta's header cell, (s)he said it was ok to use
-//I think I will be using this format for my tweak prefs from now on.
-//It's kinda nice, ngl
+//Not my UI design. I think I will be using this format for my tweak prefs from
+//now on. It's kinda nice, ngl.
+
+//UIColor *mainColor = [UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0];
+//UIColor *secondaryColor = [UIColor colorWithRed:0.04 green:0.37 blue:0.68 alpha:1.0];
+NSString *tweakName = @"Cartella";
+
 @implementation cartellaRootListController
+
 
 - (instancetype)init
 {
@@ -76,12 +81,12 @@
 	self.navigationItem.titleView = self.iconView;
 
 	self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,280,[[UIScreen mainScreen] bounds].size.width, 100)];
-	self.headerView.backgroundColor = [UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0];
+	self.headerView.backgroundColor = [UIColor colorWithRed:0.04 green:0.37 blue:0.68 alpha:1.0];
 
 	UILabel *tweakLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 10)];
 	tweakLabel.font=[UIFont boldSystemFontOfSize:25];
 	tweakLabel.textColor = [UIColor whiteColor];
-	tweakLabel.text = @"Cartella";
+	tweakLabel.text = tweakName;
 	[self.headerView addSubview:tweakLabel];
 
 	UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 200, 10)];
@@ -99,11 +104,11 @@
 	if (!self.overflowView)
 	{
 		self.overflowView = [[UIView alloc] initWithFrame:CGRectMake(0,-310,[[UIScreen mainScreen] bounds].size.width,480)];
-		self.overflowView.backgroundColor = [UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0];;
+		self.overflowView.backgroundColor = [UIColor colorWithRed:0.04 green:0.37 blue:0.68 alpha:1.0];;
 		CAGradientLayer *gradient = [CAGradientLayer layer];
 
 		gradient.frame = self.overflowView.bounds;
-		gradient.colors = @[(id)[UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0].CGColor, (id)[UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0].CGColor];
+		gradient.colors = @[(id)[UIColor colorWithRed:0.04 green:0.37 blue:0.68 alpha:1.0].CGColor, (id)[UIColor colorWithRed:0.04 green:0.37 blue:0.68 alpha:1.0].CGColor];
 
 		[self.overflowView.layer insertSublayer:gradient atIndex:0];
 		[self.overflowView addSubview:self.headerView];
