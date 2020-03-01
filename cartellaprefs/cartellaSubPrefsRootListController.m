@@ -1,5 +1,6 @@
 #include "cartellaSubPrefsRootListController.h"
 #import <spawn.h>
+#import <libcolorpicker.h>
 //I know this isn't a root controller, i'm too lazy to rename
 
 @implementation cartellaSubPrefsRootListController
@@ -23,6 +24,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+	[self reload];
 	[UISegmentedControl appearanceWhenContainedInInstancesOfClasses:@[self.class]].tintColor = [UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0];
     [[UISwitch appearanceWhenContainedInInstancesOfClasses:@[self.class]] setOnTintColor:[UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0]];
     [[UISlider appearanceWhenContainedInInstancesOfClasses:@[self.class]] setTintColor:[UIColor colorWithRed:0.04 green:0.74 blue:0.89 alpha:1.0]];

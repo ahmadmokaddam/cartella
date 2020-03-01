@@ -1,6 +1,6 @@
 Package: com.burritoz.cartella
 Name: Cartella
-Depends: mobilesubstrate, ws.hbang.common (>= 1.13), preferenceloader
+Depends: mobilesubstrate, ws.hbang.common (>= 1.13), preferenceloader, org.thebigboss.libcolorpicker
 Conflicts: me.kritanta.homeplus (<= 0.4.9-beta)
 Version: 0.5.1
 Architecture: iphoneos-arm

@@ -31,7 +31,7 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
   - HomePlus compatibility will be added in the next HomePlus release.
 
 ## - Version 0.5.0.1:
-  - Cozy Badges support
+  - Cozy Badges support (edit: This doesn't work for all people)
 
 ## - Version 0.5.0.2:
   - An option to move the title as desired
@@ -44,6 +44,8 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
   - Nicer preferences using kritanta's pref cells
   - Restructured a lot of stuff
   - Added custom wallpaper blur effect instead of just "Hide Wallpaper Blur"
-  - Custom folder icon colors
-  - Custom folder view colors
+  - Custom folder icon color
+  - Custom folder view color
+  - Custom folder background blur color
   - Changed the math I use to calculate the folder background size to allow for more a consistent look across all devices, including those with custom resolutions.
+  - Primal Folder compatibility seems to be something that the developer needs to take care of, nothing i did would work. (It seems to be related to the grid of the folder)

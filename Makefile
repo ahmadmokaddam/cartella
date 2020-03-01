@@ -9,6 +9,7 @@ TWEAK_NAME = Cartella
 Cartella_FILES = Cartella.xm
 Cartella_CFLAGS = -fobjc-arc
 Cartella_EXTRA_FRAMEWORKS += Cephei #I use Cephei because it's convenient
+Cartella_LIBRARIES = colorpicker
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += cartellaprefs

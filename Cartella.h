@@ -1,11 +1,24 @@
 //Created February 2020 by burrit0z
 
+#import <libcolorpicker.h>
+UIColor *colorFromDefaultsWithKey(NSString *defaults, NSString *key, NSString *fallback);
+
 @interface SBIconListGridLayoutConfiguration
 @property (nonatomic, assign) NSString *isFolder;
 
 - (NSString *)getLocations;
 - (NSUInteger)numberOfPortraitColumns;
 - (NSUInteger)numberOfPortraitRows;
+@end
+
+@interface SBFloatyFolderView : UIView
+-(void)layoutSubviews;
+-(void)setBackgroundColor:(UIColor *)arg1;
+@end
+
+@interface SBFolderBackgroundView : UIView
+-(void)layoutSubviews;
+-(void)setBackgroundColor:(UIColor *)arg1;
 @end
 
 @interface SBFolderControllerBackgroundView : UIView
@@ -67,6 +80,7 @@ BOOL boldText;
 BOOL titleAffectedTop;
 BOOL shouldFolderIconColor;
 BOOL shouldFolderBackgroundViewColor;
+BOOL shouldFolderBackgroundColor;
 BOOL customRadius;
 
 NSInteger closeByOption;
@@ -82,16 +96,5 @@ double cachedSideOffset;
 double setFolderIconSize;
 double setCustomRadius;
 double setBlur;
-
-double iconRed;
-double iconGreen;
-double iconBlue;
-double iconAlpha;
-
-double folderBackgroundViewRed;
-double folderBackgroundViewGreen;
-double folderBackgroundViewBlue;
-double folderBackgroundViewAlpha;
-
 
 HBPreferences *preferences;

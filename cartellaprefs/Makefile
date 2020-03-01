@@ -9,6 +9,7 @@ CartellaPrefs_FRAMEWORKS = UIKit
 CartellaPrefs_PRIVATE_FRAMEWORKS = Preferences
 CartellaPrefs_CFLAGS = -fobjc-arc
 CartellaPrefs_EXTRA_FRAMEWORKS += Cephei CepheiPrefs
+CartellaPrefs_LIBRARIES = colorpicker
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

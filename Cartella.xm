@@ -35,6 +35,15 @@
   }
 }
 
+-(void)layoutSubviews {
+  %orig;
+  if (shouldFolderBackgroundViewColor) {
+    self.backgroundColor = colorFromDefaultsWithKey(@"com.burritoz.cartellaprefs", @"setFolderBackgroundViewColor", @"#000000");
+  } else if (blackOut) {
+    self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+  }
+}
+
 -(BOOL)_tapToCloseGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2 {
   %orig;
   if ((closeByOption == 2) || (closeByOption == 0)) {
@@ -110,7 +119,7 @@
       return UIEdgeInsetsMake(
         (original.top + 50),
         (original.left/2), //no sense in wasting space if the background is hidden, so it won't look ugly.
-        (original.bottom - 50),
+        (original.bottom + 50),
         (original.right/2)
       );
     } else {
@@ -179,6 +188,9 @@
   CGRect original = %orig;
   //This next part is a whole lot of proportions and mathsss
   double titletopOffset = (((titleAffectedTop) ? topOffset : 0) + additionalTitleMovement);
+  if (!hideFolderBackground) {
+    titletopOffset = titletopOffset-40;
+  }
   if (fullScreen && isNotchedDevice) {
     return CGRectMake(
       ((original.origin.x * 0.14) - (sideOffset/2)),
@@ -223,14 +235,8 @@
 //be easy for others to understand when they are reading my code.
 
 -(void)layoutSubviews {
-  if (shouldFolderBackgroundViewColor) {
-    self.backgroundColor = [UIColor colorWithRed:folderBackgroundViewRed green:folderBackgroundViewGreen blue:folderBackgroundViewBlue alpha:folderBackgroundViewAlpha];
-  } else if (blackOut) {
-    self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
-  } else {
     %orig;
     self.alpha = setBlur;
-  }
 }
 
 %end
@@ -243,13 +249,25 @@
 
 %end
 
+%hook SBFolderBackgroundView
+
+-(void)layoutSubviews {
+  %orig;
+  if (shouldFolderBackgroundColor) {
+    self.backgroundColor = colorFromDefaultsWithKey(@"com.burritoz.cartellaprefs", @"setFolderBackgroundColor", @"#000000");
+  } else if (blackOut) {
+    self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+  }
+}
+
+%end
 %hook SBFolderIconImageView
 
 -(void)layoutSubviews { //I'm sorry for using layoutSubviews, there's probably a better way
   %orig; //I want to run the original stuff first
   if (shouldFolderIconColor) {
     self.backgroundView.blurView.hidden = 1;
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:iconRed green:iconGreen blue:iconBlue alpha:iconAlpha];
+    self.backgroundView.backgroundColor = colorFromDefaultsWithKey(@"com.burritoz.cartellaprefs", @"setFolderIconColor", @"#000000");
   }
   if (hideIconBackground) {
     self.backgroundView.blurView.hidden = 1;
@@ -321,15 +339,6 @@ static void reloadDynamics() { //This is called when the user selects the
                                //"Apply Dynamically" option in settings
   shouldFolderIconColor = [preferences boolForKey:@"shouldFolderIconColor"];
   shouldFolderBackgroundViewColor = [preferences boolForKey:@"shouldFolderBackgroundViewColor"];
-  iconRed = [preferences doubleForKey:@"iconRed"];
-  iconBlue = [preferences doubleForKey:@"iconBlue"];
-  iconGreen = [preferences doubleForKey:@"iconGreen"];
-  iconAlpha = [preferences doubleForKey:@"iconAlpha"];
-
-  folderBackgroundViewRed = [preferences doubleForKey:@"folderBackgroundViewRed"];
-  folderBackgroundViewGreen = [preferences doubleForKey:@"folderBackgroundViewGreen"];
-  folderBackgroundViewBlue = [preferences doubleForKey:@"folderBackgroundViewBlue"];
-  folderBackgroundViewAlpha = [preferences doubleForKey:@"folderBackgroundViewAlpha"];
 
   customRadius = [preferences boolForKey:@"customRadius"];
   setCustomRadius = [preferences doubleForKey:@"setCustomRadius"];
@@ -431,16 +440,8 @@ static void reloadDynamics() { //This is called when the user selects the
   [preferences registerDouble:&setCustomRadius default:60 forKey:@"setCustomRadius"];
 
   [preferences registerBool:&shouldFolderIconColor default:NO forKey:@"shouldFolderIconColor"];
-  [preferences registerDouble:&iconRed default:0 forKey:@"iconRed"];
-  [preferences registerDouble:&iconGreen default:0 forKey:@"iconGreen"];
-  [preferences registerDouble:&iconBlue default:0 forKey:@"iconBlue"];
-  [preferences registerDouble:&iconAlpha default:0 forKey:@"iconAplha"]; //This is a prime example of bad naming
-
   [preferences registerBool:&shouldFolderBackgroundViewColor default:NO forKey:@"shouldFolderBackgroundViewColor"];
-  [preferences registerDouble:&folderBackgroundViewRed default:0 forKey:@"folderBackgroundViewRed"];
-  [preferences registerDouble:&folderBackgroundViewGreen default:0 forKey:@"folderBackgroundViewGreen"];
-  [preferences registerDouble:&folderBackgroundViewBlue default:0 forKey:@"folderBackgroundViewBlue"];
-  [preferences registerDouble:&folderBackgroundViewAlpha default:0 forKey:@"folderBackgroundViewAplha"];
+  [preferences registerBool:&shouldFolderBackgroundColor default:NO forKey:@"shouldFolderBackgroundColor"];
 
   [preferences setDouble:([preferences doubleForKey:@"sideOffset"]) forKey:@"cachedSideOffset"];
   [preferences setDouble:([preferences doubleForKey:@"topOffset"]) forKey:@"cachedTopOffset"];
