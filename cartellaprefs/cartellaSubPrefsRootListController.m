@@ -43,6 +43,11 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
        CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.burritoz.cartella/reload"), nil, nil, true);
 		 });
+		 PSTableCell *cell = [self cachedCellForSpecifier:specifier];
+			cell.cellEnabled = NO;
+		 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			 [HBRespringController respring];
+		 });
 	 }
 
 -(void)applyColors { //This should work?

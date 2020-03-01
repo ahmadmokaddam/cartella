@@ -9,7 +9,7 @@
 //If you have any optimization sugestions, or just sugestions in general, please
 //do give them. (I annotate my code to explain my reasons for doing things)
 
-#import <Cephei/HBPreferences.h> //Sorry if you don't like Cephei (kritanta)
+#import <Cephei/HBPreferences.h> //Sorry if you don't like Cephei
 #import "Cartella.h"
 
 %group labelHandling
@@ -157,15 +157,15 @@
     //Bolders used HelveticaNeue, so it looks exactly like Bolders did!
     //I had to look at UIFont.h to find the property pointSize (it's a CGFloat)
   }
-  if (textAlignment != 1) {
+}
+
+-(void)setFontSize:(double)arg1 {
+  if (textAlignment != 1) { //doing this here instead of layoutSubviews
     [self setTextCentersHorizontally:NO];
     if (textAlignment != 0) {
       [self setTextAlignment:textAlignment];
     }
   }
-}
-
--(void)setFontSize:(double)arg1 {
   if (titleStyle == 1) {
     %orig(55);
   } else if (titleStyle == 2) {

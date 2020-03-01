@@ -83,8 +83,8 @@ NSString *tweakName = @"Cartella";
 	self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,280,[[UIScreen mainScreen] bounds].size.width, 100)];
 	self.headerView.backgroundColor = [UIColor colorWithRed:0.04 green:0.37 blue:0.68 alpha:1.0];
 
-	UILabel *tweakLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 200, 10)];
-	tweakLabel.font=[UIFont boldSystemFontOfSize:25];
+	UILabel *tweakLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, [[UIScreen mainScreen] bounds].size.width, 30)];
+	tweakLabel.font=[UIFont boldSystemFontOfSize:38];
 	tweakLabel.textColor = [UIColor whiteColor];
 	tweakLabel.text = tweakName;
 	[self.headerView addSubview:tweakLabel];

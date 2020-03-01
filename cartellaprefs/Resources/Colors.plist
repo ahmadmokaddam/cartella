@@ -30,7 +30,7 @@
 			<key>key</key>
 			<string>iconRed</string>
 			<key>placeholder</key>
-			<string>Red</string>
+			<string>Red (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -40,7 +40,7 @@
 			<key>key</key>
 			<string>iconGreen</string>
 			<key>placeholder</key>
-			<string>Green</string>
+			<string>Green (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -50,7 +50,7 @@
 			<key>key</key>
 			<string>iconBlue</string>
 			<key>placeholder</key>
-			<string>Blue</string>
+			<string>Blue (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -60,7 +60,7 @@
 			<key>key</key>
 			<string>iconAplha</string>
 			<key>placeholder</key>
-			<string>Aplha</string>
+			<string>Aplha (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -96,7 +96,7 @@
 			<key>key</key>
 			<string>folderBackgroundViewRed</string>
 			<key>placeholder</key>
-			<string>Red</string>
+			<string>Red (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -106,7 +106,7 @@
 			<key>key</key>
 			<string>folderBackgroundViewGreen</string>
 			<key>placeholder</key>
-			<string>Green</string>
+			<string>Green (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -116,7 +116,7 @@
 			<key>key</key>
 			<string>folderBackgroundViewBlue</string>
 			<key>placeholder</key>
-			<string>Blue</string>
+			<string>Blue (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -126,7 +126,7 @@
 			<key>key</key>
 			<string>folderBackgroundViewAplha</string>
 			<key>placeholder</key>
-			<string>Aplha</string>
+			<string>Aplha (0-1)</string>
 		</dict>
 		<dict>
 			<key>cell</key>
