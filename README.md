@@ -49,3 +49,7 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
   - Custom folder background blur color
   - Changed the math I use to calculate the folder background size to allow for more a consistent look across all devices, including those with custom resolutions.
   - Primal Folder compatibility seems to be something that the developer needs to take care of, nothing i did would work. (It seems to be related to the grid of the folder)
+
+## version 0.6.1:
+  - Claims to fix the issues with inability to change side and top pinch factors
+  - Reverts bad changes to the method in creating the folder sizing

@@ -117,9 +117,9 @@
     if ([self.isFolder isEqualToString:@"YES"]) {
       UIEdgeInsets original = %orig;
       return UIEdgeInsetsMake(
-        (original.top + 50),
+        (original.top),
         (original.left/2), //no sense in wasting space if the background is hidden, so it won't look ugly.
-        (original.bottom + 50),
+        (original.bottom),
         (original.right/2)
       );
     } else {
@@ -136,9 +136,10 @@
 
 -(CGSize)contentBackgroundSize {
   if (fullScreen) { //So we don't adjust anything if it's not set to fullScreen
+    CGSize original = %orig;
     return CGSizeMake(
-      (([[UIScreen mainScreen] bounds].size.width - 20) - sideOffset),
-      (([[UIScreen mainScreen] bounds].size.height - 220) - topOffset)
+      ((original.width*1.15) - sideOffset),
+      (original.height*1.6 - topOffset)
     );
   } else {
     return (%orig);
