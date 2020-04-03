@@ -80,6 +80,78 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
+			<string>Folder Icon Columns</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>3</real>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>folderIconColumns</string>
+			<key>validValues</key>
+			<array>
+				<real>2</real>
+				<real>3</real>
+				<real>4</real>
+				<real>5</real>
+				<real>6</real>
+				<real>7</real>
+				<real>8</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>2</string>
+				<string>3</string>
+				<string>4</string>
+				<string>5</string>
+				<string>6</string>
+				<string>7</string>
+				<string>8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Folder Icon Rows</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>3</real>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>folderIconRows</string>
+			<key>validValues</key>
+			<array>
+				<real>2</real>
+				<real>3</real>
+				<real>4</real>
+				<real>5</real>
+				<real>6</real>
+				<real>7</real>
+				<real>8</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>2</string>
+				<string>3</string>
+				<string>4</string>
+				<string>5</string>
+				<string>6</string>
+				<string>7</string>
+				<string>8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
 			<string>Full Screen Folder Grid Options:</string>
 		</dict>
 		<dict>
@@ -157,6 +229,30 @@
 			<string>com.burritoz.cartellaprefs</string>
 			<key>key</key>
 			<string>additionalTitleMovement</string>
+			<key>min</key>
+			<real>-200</real>
+			<key>max</key>
+			<real>200</real>
+			<key>isSegmented</key>
+			<false/>
+			<key>showValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Move Page Dots (downwards):</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<string>0</string>
+			<key>defaults</key>
+			<string>com.burritoz.cartellaprefs</string>
+			<key>key</key>
+			<string>dotMovement</string>
 			<key>min</key>
 			<real>-200</real>
 			<key>max</key>

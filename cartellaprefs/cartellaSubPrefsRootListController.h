@@ -10,7 +10,7 @@
 #import <Preferences/PSListItemsController.h>
 #import <spawn.h>
 
-@interface cartellaSubPrefsRootListController : PSListController{
+@interface cartellaSubPrefsRootListController : HBRootListController{
     UITableView * _table;
 }
 //krit's stuff (thanks)

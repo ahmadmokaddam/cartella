@@ -52,8 +52,4 @@
 		 });
 	 }
 
--(void)applyColors { //This should work?
-   [self.view endEditing:YES];
-}
-
 @end

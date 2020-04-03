@@ -3,13 +3,28 @@
 #import <libcolorpicker.h>
 UIColor *colorFromDefaultsWithKey(NSString *defaults, NSString *key, NSString *fallback);
 
-@interface SBIconListGridLayoutConfiguration
-@property (nonatomic, assign) NSString *isFolder;
+@interface SBIconController : UIView
+@end
 
-- (NSString *)getLocations;
+@interface SBIconListGridLayoutConfiguration
+@property (nonatomic, assign) BOOL isFolder;
+
+- (BOOL)getLocations;
 - (NSUInteger)numberOfPortraitColumns;
 - (NSUInteger)numberOfPortraitRows;
 @end
+
+@interface SBIconGridImage
++(id)gridImageForLayout:(id)arg1 previousGridImage:(id)arg2 previousGridCellIndexToUpdate:(unsigned long long)arg3 pool:(id)arg4 cellImageDrawBlock:(id)arg5 ;
++(id)gridImageForLayout:(id)arg1 cellImageDrawBlock:(id)arg2 ;
++(id)gridImageForLayout:(id)arg1 pool:(id)arg2 cellImageDrawBlock:(id)arg3 ;
+@end
+
+/*
+@interface SBIconListFlowLayout
+- (NSUInteger)numberOfRowsForOrientation:(NSInteger)arg1;
+- (NSUInteger)numberOfColumnsForOrientation:(NSInteger)arg1;
+@end */
 
 @interface SBFloatyFolderView : UIView
 -(void)layoutSubviews;
@@ -84,8 +99,12 @@ BOOL shouldFolderBackgroundColor;
 BOOL customRadius;
 
 NSInteger closeByOption;
+
 NSInteger folderRows;
 NSInteger folderColumns;
+
+NSInteger folderIconRows;
+NSInteger folderIconColumns;
 NSInteger titleStyle;
 NSInteger textAlignment;
 double topOffset;
@@ -93,8 +112,12 @@ double sideOffset;
 double additionalTitleMovement;
 double cachedTopOffset;
 double cachedSideOffset;
-double setFolderIconSize;
+double setFolderIconSizeA;
+double setFolderIconSizeD;
 double setCustomRadius;
 double setBlur;
+double dotMovement;
 
 HBPreferences *preferences;
+
+BOOL hasProcessLaunched;

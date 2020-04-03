@@ -1,4 +1,7 @@
 # Introducing Cartella
+
+# At this time, Cartella is now deprecated. Cartella is replaced with a new, much more feature rich and less buggy tweak called Folded. It is available on Packix for FREE!
+
 ## Bolders for iOS 13 and WAY more!
 
 We all remember Bolders, that awesome tweak that broke on iOS 13, which had made all of our folders look so good! Now, introducing Cartella, Italian for folder. Take control over the tiny details of your folders, and make them look BEAUTIFUL!!!
@@ -24,6 +27,11 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
 - Resize the Grid preview of the folder icon
 - Hide all SpringBoard labels
 - Hide all SpringBoard page dots
+- Custom folder icon color
+- Custom folder view color
+- Custom folder background blur color
+- Custom folder icon columns!
+- Custom folder icon rows! 
 
 # Change log:
 ## - Version 0.5:
@@ -51,5 +59,10 @@ Cartella is (mostly) dynamic, so you won't need to respring to apply most option
   - Primal Folder compatibility seems to be something that the developer needs to take care of, nothing i did would work. (It seems to be related to the grid of the folder)
 
 ## version 0.6.1:
-  - Claims to fix the issues with inability to change side and top pinch factors
+  - Claims to fix the issues with inability to change side and top pinch factors (edit: it does :P)
   - Reverts bad changes to the method in creating the folder sizing
+  - Fixes issues on iPhone XS 
+
+## version 0.7:
+  - At this time, Cartella is now deprecated. Cartella is replaced with a new, much more feature rich and less buggy tweak called Folded. It is available on Packix for FREE!
+
